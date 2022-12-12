@@ -58,7 +58,7 @@ public class InptisteProvider extends ContentProvider {
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-            db.execSQL(CREATE_DB_TABLE);
+            sqLiteDatabase.execSQL(CREATE_DB_TABLE);
         }
 
         @Override

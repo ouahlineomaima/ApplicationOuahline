@@ -16,17 +16,23 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.annotation.SuppressLint;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
 
     UnService myservice;
     boolean isBound = false;
+    EditText nameField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        nameField = findViewById(R.id.nom);
         /*
         // creation d'une autre activité
         Toast.makeText(this,"Activité est créée", Toast.LENGTH_SHORT).show();
@@ -80,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickRetrouverNotesInptistes(View view){
-        String URL = "content//come.example.applicationouahline.InptisteProvider";
+        String URL = "content://com.example.applicationouahline.InptisteProvider";
 
         Uri inptistes = Uri.parse(URL);
         Cursor c;
@@ -93,6 +99,27 @@ public class MainActivity extends AppCompatActivity {
                     ";" + c.getString(c.getColumnIndex(InptisteProvider.NOM)) +
                             ";" + c.getString(c.getColumnIndex(InptisteProvider.NOTE)),
                     Toast.LENGTH_SHORT).show();while (c.moveToNext());
+        }
+    }
+    public void onClickRetrouverNotesInptiste(View view){
+        String name = nameField.getText().toString();
+        String URL = "content://com.example.applicationouahline.InptisteProvider";
+
+        Uri inptistes = Uri.parse(URL);
+        Cursor c;
+        String [] l = {name};
+        c = getContentResolver().query(inptistes, null, "nom= ?", l, "nom");
+
+        assert c != null;
+        if(c.moveToFirst()){
+            do Toast.makeText(this,
+                    c.getString(c.getColumnIndex(InptisteProvider._ID)) +
+                            ";" + c.getString(c.getColumnIndex(InptisteProvider.NOM)) +
+                            ";" + c.getString(c.getColumnIndex(InptisteProvider.NOTE)),
+                    Toast.LENGTH_SHORT).show();while (c.moveToNext());
+        }
+        else {
+            Toast.makeText(this, "Etudiant non trouvé", Toast.LENGTH_LONG).show();
         }
     }
     /*
