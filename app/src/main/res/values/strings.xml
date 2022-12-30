@@ -1,7 +1,3 @@
 <resources>
     <string name="app_name">ApplicationOuahline</string>
-    <string name="broadcast_d_intents">broadcast receiver</string>
-    <string name="broadcaster">broadcast</string>
-
-
 </resources>

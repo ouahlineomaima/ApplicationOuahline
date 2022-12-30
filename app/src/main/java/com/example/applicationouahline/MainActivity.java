@@ -1,44 +1,59 @@
 package com.example.applicationouahline;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private BroadcastReceiver monReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        IntentFilter filter = new IntentFilter();
-        filter.addAction("com.data.CUSTOM_INTENT");
-        monReceiver = new BroadcastReceiver(){
-
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                Toast.makeText(context, "Intent détécté", Toast.LENGTH_LONG).show();
-            }
-        };
-        registerReceiver(monReceiver, filter);
+        Toast.makeText(this, "Activité est crée", Toast.LENGTH_SHORT).show();
+        Log.i("onCreate()", "Activité est crée");
     }
-    public void broadcastIntent(View view){
-        Intent intent = new Intent();
-        intent.setAction("com.data.CUSTOM_INTENT");
-        sendBroadcast(intent);
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Toast.makeText(this, "Activité est démarrée", Toast.LENGTH_SHORT).show();
+        Log.i("onStart()", "Activité est démarrée");
+    }
+
+    @Override
+    protected void onRestart(){
+        super.onRestart();
+        Toast.makeText(this, "Activité est redémarrée", Toast.LENGTH_SHORT).show();
+        Log.i("onRestart()", "Activité est redémarrée");
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Toast.makeText(this, "Activité est reprise", Toast.LENGTH_SHORT).show();
+        Log.i("onResume()", "Activité est démarrée");
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        Toast.makeText(this, "Activité est en pause", Toast.LENGTH_SHORT).show();
+        Log.i("onPause()", "Activité est en pause");
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        Toast.makeText(this, "Activité est stoppée", Toast.LENGTH_SHORT).show();
+        Log.i("onStop()", "Activité est stoppée");
     }
 
     @Override
     protected void onDestroy(){
         super.onDestroy();
-        if(monReceiver != null){
-            unregisterReceiver(monReceiver);
-            monReceiver = null;
-        }
+        Toast.makeText(this, "Activité est détruite", Toast.LENGTH_SHORT).show();
+        Log.i("onDestroy()", "Activity desttroyed");
     }
 }
