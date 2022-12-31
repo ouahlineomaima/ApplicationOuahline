@@ -14,11 +14,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void demarrerService(View view){
-        startService(new Intent(this, UnService.class));
+        Intent startIntent = new Intent(this, RingtoneIntentService.class);
+        startIntent.setAction(RingtoneIntentService.ACTION_START_RINGTONE);
+        startService(startIntent);
     }
 
     public void arreterService(View view){
-        stopService(new Intent(this, UnService.class));
+        Intent stopIntent = new Intent(this, RingtoneIntentService.class);
+        stopIntent.setAction(RingtoneIntentService.ACTION_STOP_RINGTONE);
+        startService(stopIntent);
     }
 
 
