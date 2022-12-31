@@ -14,9 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApplicationOuahline"
         tools:targetApi="31">
-        <service
-            android:name=".RingtoneIntentService"
-            android:exported="false"></service>
+        <provider
+            android:name=".InptisteProvider"
+            android:authorities="com.example.applicationouahline.InptisteProvider"
+            android:enabled="true"
+            android:exported="true"></provider>
 
         <activity
             android:name=".MainActivity"
