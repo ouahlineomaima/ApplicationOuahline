@@ -11,7 +11,7 @@ public class RingtoneIntentService extends IntentService {
      static final String ACTION_START_RINGTONE = "com.example.action.START_RINGTONE";
      static final String ACTION_STOP_RINGTONE = "com.example.action.STOP_RINGTONE";
 
-    private Ringtone ringtone;
+    private static Ringtone ringtone;
 
     public RingtoneIntentService() {
         super("RingtoneIntentService");
