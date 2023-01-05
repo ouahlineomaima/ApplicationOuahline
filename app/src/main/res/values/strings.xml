@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">ApplicationOuahline</string>
-    <string name="commentaire">intent explicite et implicite</string>
-    <string name="intentexplicite">Intent explicite</string>
-    <string name="intentimplicite">Intent implicite</string>
+    <string name="app_name">Gestionnaire des tâches</string>
+    <string name="text">Bienvenu au Gestionnaire des tâches!</string>
+
 </resources>
